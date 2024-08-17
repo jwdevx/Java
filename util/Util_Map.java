@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.Collection;
+import java.util.Set;
 
 public class Util_Map<T extends Entity> {
     private Map<Object, T> entities = new HashMap<>();
@@ -75,6 +77,38 @@ public class Util_Map<T extends Entity> {
      */
     public T getOrDefault(Object key, T defaultValue) {
         return entities.getOrDefault(key, defaultValue);
+    }
+
+
+   /**
+     * Returns the set of keys contained in the specified map.
+     *
+     * <p>This method provides a generic way to retrieve the keys from any map,
+     * regardless of the types of keys and values it contains.</p>
+     *
+     * @param <K> the type of keys maintained by the map
+     * @param <V> the type of mapped values
+     * @param map the map from which to retrieve the keys
+     * @return a set view of the keys contained in the map
+     */
+    public <K, V> Set<K> getKeys(Map<K, V> entities) {
+        return entities.keySet();
+    }
+
+
+    /**
+     * Returns the collection of values contained in the specified map.
+     *
+     * <p>This method provides a generic way to retrieve the values from any map,
+     * regardless of the types of keys and values it contains.</p>
+     *
+     * @param <K> the type of keys maintained by the map
+     * @param <V> the type of mapped values
+     * @param map the map from which to retrieve the values
+     * @return a collection view of the values contained in the map
+     */
+    public <K, V> Collection<V> getValues(Map<K, V> entities) {
+        return entities.values();
     }
 
     // =========================================================================
@@ -161,6 +195,7 @@ public class Util_Map<T extends Entity> {
         entities.clear();
     }
     // =========================================================================
+
 
     /**
      * Looping through keys using keySet()
