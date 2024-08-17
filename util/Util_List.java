@@ -112,14 +112,24 @@ public class Util_List<T extends Entity> {
         return entities.contains(entity);
     }
 
+    // =========================================================================
     /**
-     * Removes from this list all of its elements that are contained in the specified collection.
-     * @param c - collection containing elements to be removed from this list
-     * @return true if this list changed as a result of the call
+     * Gets the size of the list.
+     * @return - the number of entities in the list
      */
-    public boolean removeAllEntities(Collection<?> c) {
-        return entities.removeAll(c);
+    public int size() {
+        return entities.size();
     }
+
+    /**
+     * Checks if the list is empty.
+     * @return - true if the list is empty, otherwise false
+     */
+    public boolean isEmpty() {
+        return entities.isEmpty();
+    }
+
+    // =========================================================================
 
     /**
      * Returns the index of the first occurrence of the specified element in the list.
@@ -137,23 +147,6 @@ public class Util_List<T extends Entity> {
      */
     public int lastIndexOf(T entity) {
         return entities.lastIndexOf(entity);
-    }
-
-    // =========================================================================
-    /**
-     * Gets the size of the list.
-     * @return - the number of entities in the list
-     */
-    public int size() {
-        return entities.size();
-    }
-
-    /**
-     * Checks if the list is empty.
-     * @return - true if the list is empty, otherwise false
-     */
-    public boolean isEmpty() {
-        return entities.isEmpty();
     }
 
     // =========================================================================
@@ -190,6 +183,15 @@ public class Util_List<T extends Entity> {
             return entities.remove(index);
         }
         throw new NoSuchElementException("Entity not found at index: " + index);
+    }
+
+    /**
+     * Removes from this list all of its elements that are contained in the specified collection.
+     * @param c - collection containing elements to be removed from this list
+     * @return true if this list changed as a result of the call
+     */
+    public boolean removeAllEntities(Collection<?> c) {
+        return entities.removeAll(c);
     }
 
     /**
@@ -230,6 +232,16 @@ public class Util_List<T extends Entity> {
 
 
     /**
+     * Using a Stream (Java 8 and later)
+     * Converts the list into a stream and processes them.
+     */
+    public void loopUsingStream() {
+        entities.stream().forEach(entity -> {
+            System.out.println("Entity: " + entity);
+        });
+    }
+
+    /**
      * Using an Iterator to loop through the list
      * Provides more control over the iteration process.
      */
@@ -241,15 +253,6 @@ public class Util_List<T extends Entity> {
         }
     }
 
-    /**
-     * Using a Stream (Java 8 and later)
-     * Converts the list into a stream and processes them.
-     */
-    public void loopUsingStream() {
-        entities.stream().forEach(entity -> {
-            System.out.println("Entity: " + entity);
-        });
-    }
     // =========================================================================
     /**
      * Returns a list iterator over the elements in this list.
@@ -304,8 +307,6 @@ public class Util_List<T extends Entity> {
                        .map(mapper)
                        .collect(Collectors.toList());
     }
-
-
 
     // =========================================================================
     /**

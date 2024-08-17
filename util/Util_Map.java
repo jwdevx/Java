@@ -9,8 +9,6 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Util_Map<T extends Entity> {
-
-    // Use HashMap for efficient lookup by ID
     private Map<Object, T> entities = new HashMap<>();
 
     /**
